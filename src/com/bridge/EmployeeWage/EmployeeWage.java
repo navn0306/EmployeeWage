@@ -9,12 +9,12 @@ public class EmployeeWage {
 
     public static void main(String[] args) {
         //VARIABLES
-        int empHrs = 0, total_EMP_HRS = 0, total_Working_Days = 0;
+        int empHrs = 0, totalEMPHRS = 0, totalWorkingDays = 0;
 
 
-        while (total_EMP_HRS <= MAX_HRS_IN_MONTH && total_Working_Days < NUM_OF_WORKING_DAYS) {
+        while (totalEMPHRS <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
 
-            total_Working_Days++;
+            totalWorkingDays++;
 
             double empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
@@ -28,9 +28,9 @@ public class EmployeeWage {
                 default:
                     empHrs = 0;
             }
-            total_EMP_HRS += empHrs;
+            totalEMPHRS += empHrs;
         }
-        int total_Emp_Wage = total_EMP_HRS * EMP_RATE_PER_HOUR;
+        int total_Emp_Wage = totalEMPHRS * EMP_RATE_PER_HOUR;
         System.out.println("Total Emp Wage: " + total_Emp_Wage);
 
     }
