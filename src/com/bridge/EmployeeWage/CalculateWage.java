@@ -1,7 +1,8 @@
 package com.bridge.EmployeeWage;
 
-public class CalculateWage extends EmployeeWage {
+public class CalculateWage implements FirstCompanyWage, SecondCompanyWage {
     public static void main(String[] args){
-        calculateWage();
+        FirstCompanyWage.calculateWage();
+        SecondCompanyWage.calculateWage();
     }
 }
