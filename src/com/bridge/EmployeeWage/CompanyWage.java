@@ -1,13 +1,13 @@
 package com.bridge.EmployeeWage;
 
-public interface SecondCompanyWage {
+public interface CompanyWage {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
-    public static final int EMP_RATE_PER_HOUR = 19;
-    public static final int NUM_OF_WORKING_DAYS = 18;
-    public static final int MAX_HRS_IN_MONTH = 98;
+    public static final int EMP_RATE_PER_HOUR = 20;
+    public static final int NUM_OF_WORKING_DAYS = 20;
+    public static final int MAX_HRS_IN_MONTH = 100;
 
-    public static void calculateWage() {
+    public static void calculateWage(int companyNo) {
         int empHrs = 0, totalEMPHRS = 0, totalWorkingDays = 0;
 
 
@@ -30,6 +30,6 @@ public interface SecondCompanyWage {
             totalEMPHRS += empHrs;
         }
         int total_Emp_Wage = totalEMPHRS * EMP_RATE_PER_HOUR;
-        System.out.println("Second Company Emp Wage: " + total_Emp_Wage);
+        System.out.println(companyNo + " Company Emp Wage: " + total_Emp_Wage);
     }
 }
