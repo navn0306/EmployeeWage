@@ -32,11 +32,4 @@ public class EmployeeWage {
         int total_Emp_Wage = totalEMPHRS * EMP_RATE_PER_HOUR;
         System.out.println("Total Emp Wage: " + total_Emp_Wage);
     }
-
-    public static void main(String[] args) {
-
-        calculateWage();
-    }
-
-
 }
