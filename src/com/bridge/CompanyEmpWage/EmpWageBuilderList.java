@@ -1,30 +1,25 @@
 package com.bridge.CompanyEmpWage;
 
-import com.sun.java.accessibility.util.EventQueueMonitor;
+import java.util.ArrayList;
+import java.util.List;
 
-public class EmpWageBuilderArray implements IComputeEmpWage {
+public class EmpWageBuilderList implements IComputeEmpWage {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
 
-    private int numOfCompany = 0;
-    private CompanyEmpWage[] companyEmpWageArray;
-
-
-    public EmpWageBuilderArray() {
-        companyEmpWageArray = new CompanyEmpWage[5];
-    }
+    private int numOfCompany;
+    private List<CompanyEmpWage> companyEmpWageList = new ArrayList<>();
 
     public void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
-
-        companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+        companyEmpWageList.add(new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth));
         numOfCompany++;
     }
 
     public void computeEmpWage() {
 
         for (int i = 0; i < numOfCompany; i++) {
-            companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
-            System.out.println(companyEmpWageArray[i]);
+            companyEmpWageList.get(i).setTotalEmpWage(this.computeEmpWage(companyEmpWageList.get(i)));
+            System.out.println(companyEmpWageList.get(i));
         }
     }
 
@@ -64,10 +59,10 @@ public class EmpWageBuilderArray implements IComputeEmpWage {
 
 
     public static void main(String[] args) {
-        EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
+        EmpWageBuilderList empWageBuilder = new EmpWageBuilderList();
+
         empWageBuilder.addCompanyEmpWage("Dmart", 20, 2, 10);
         empWageBuilder.addCompanyEmpWage("reliance", 10, 4, 20);
         empWageBuilder.computeEmpWage();
-        System.out.println("Total wage for company "+empWageBuilder.getTotalWage("Dmart") );
     }
 }
