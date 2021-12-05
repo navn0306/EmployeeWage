@@ -32,6 +32,7 @@ public class EmpWageBuilderList implements IComputeEmpWage {
     public int computeEmpWage(CompanyEmpWage companyEmployeeWage) {
 
         //variables
+        int day = 0;
         int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
         //Computation
         while (totalEmpHrs <= companyEmployeeWage.maxHoursPerMonth && totalWorkingDays < companyEmployeeWage.numOfWorkingDays) {
@@ -49,10 +50,14 @@ public class EmpWageBuilderList implements IComputeEmpWage {
                     break;
                 default:
                     empHrs = 0;
-            }
+            } day++;
+
             totalEmpHrs += empHrs;
-            System.out.println("Day# " + totalWorkingDays + "Emp Hr " + empHrs);
+            System.out.println("Day# " + totalWorkingDays + " Emp Hr " + empHrs);
+            System.out.println("Wage for Day " + day + " is " + empHrs * companyEmployeeWage.empRatePerHour);
+
         }
+
         return totalEmpHrs * companyEmployeeWage.empRatePerHour;
 
     }
