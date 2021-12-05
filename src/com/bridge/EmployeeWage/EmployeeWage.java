@@ -4,10 +4,25 @@ public class EmployeeWage {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
 
-    public static int computeEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+    private final String company;
+    private final int empRatePerHour;
+    private final int numOfWorkingDays;
+    private final int maxHoursPerMonth;
+    private int totalEmpWage=0;
 
+    public EmployeeWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+
+        this.company = company;
+        this.empRatePerHour = empRatePerHour;
+        this.numOfWorkingDays = numOfWorkingDays;
+        this.maxHoursPerMonth = maxHoursPerMonth;
+    }
+
+
+    public void computeEmpWage() {
+        //variables
         int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
-
+        //Computation
         while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays) {
 
             totalWorkingDays++;
@@ -25,16 +40,21 @@ public class EmployeeWage {
                     empHrs = 0;
             }
             totalEmpHrs += empHrs;
-            System.out.println("Day# " +totalWorkingDays+"Emp Hr "+empHrs);
+            System.out.println("Day# " + totalWorkingDays + "Emp Hr " + empHrs);
         }
-        int totalEmpWage = totalEmpHrs * empRatePerHour;
-        System.out.println("Total Emp Wage for company : " + company + " is :" + totalEmpWage);
-        return totalEmpWage;
+        totalEmpWage = totalEmpHrs * empRatePerHour;
+    }
 
+    public String toString() {
+        return "Total Employee Wage for Company " + company + " is " + totalEmpWage;
     }
 
     public static void main(String[] args) {
-        computeEmpWage("Dmart",20,3,10);
-        computeEmpWage("Reliance",10,4,20);
+        EmployeeWage dMart = new EmployeeWage("Dmart", 20, 2, 10);
+        EmployeeWage reliance = new EmployeeWage("Reliance", 10, 4, 20);
+        dMart.computeEmpWage();
+        System.out.println(dMart);
+        reliance.computeEmpWage();
+        System.out.println(reliance);
     }
 }
