@@ -1,17 +1,19 @@
 package com.bridge.EmployeeWage;
 
-public interface CompanyWage {
+public class EmployeeWage {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
     public static final int EMP_RATE_PER_HOUR = 20;
     public static final int NUM_OF_WORKING_DAYS = 20;
     public static final int MAX_HRS_IN_MONTH = 100;
 
-    public static void calculateWage(int companyNo) {
-        int empHrs = 0, totalEMPHRS = 0, totalWorkingDays = 0;
+
+    public static int calcEmpWageForCompany(String company, int empRate, int numOfDays, int maxHrs) {
+        //VARIABLES
+        int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 
 
-        while (totalEMPHRS <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+        while (totalEmpHrs <= maxHrs && totalWorkingDays < numOfDays) {
 
             totalWorkingDays++;
 
@@ -27,9 +29,18 @@ public interface CompanyWage {
                 default:
                     empHrs = 0;
             }
-            totalEMPHRS += empHrs;
+            totalEmpHrs += empHrs;
         }
-        int total_Emp_Wage = totalEMPHRS * EMP_RATE_PER_HOUR;
-        System.out.println(companyNo + " Company Emp Wage: " + total_Emp_Wage);
+        int totalEmpWage = totalEmpHrs * empRate;
+        System.out.println("Total Emp Wage for company : " + company + " is :" + totalEmpWage);
+        return totalEmpWage;
+
+    }
+
+    public static void main(String[] args) {
+
+        int totalWage1 = calcEmpWageForCompany("Dmart", 20, 2, 10);
+        int totalWage2 = calcEmpWageForCompany("Reliance", 10, 4, 20);
+
     }
 }
