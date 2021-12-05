@@ -1,14 +1,13 @@
-package com.bridge.CompanyEmployeeWage;
+package com.bridge.CompanyEmpWage;
 
-public class CompanyEmployeeWage {
-
+public class CompanyEmpWage {
     public final String company;
     public final int empRatePerHour;
     public final int numOfWorkingDays;
     public final int maxHoursPerMonth;
     public int totalEmpWage = 0;
 
-    public CompanyEmployeeWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+    public CompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
 
         this.company = company;
         this.empRatePerHour = empRatePerHour;
@@ -24,5 +23,4 @@ public class CompanyEmployeeWage {
     public String toString() {
         return "Total Employee Wage for Company " + company + " is " + totalEmpWage;
     }
-
 }
